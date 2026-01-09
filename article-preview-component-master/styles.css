@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+
+
+
+:root{
+    --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+    --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+    --Grayish-Blue: hsl(212, 23%, 69%);
+    --Light-Grayish-Blue: hsl(210, 46%, 95%);
+    --font-size: 13px;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size);
+    font-family: 'Rubik', 'Manrope';
+    background-color: var(--Light-Grayish-Blue);
+}
+
+
+footer{
+    
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    margin-top:auto
+}
+
+footer a{
+    text-decoration: none;
+    color: black;
+
+}
+.visual-zone img{
+    width: 100%;
+    height: auto;
+    display: block; /* elimina espacios fantasmas de imágenes inline*/
+}
+
+
+main{
+ 
+    flex: 1; /* ocupa el espacio disponible */
+    display: flex;
+    align-items: center;
+    margin: 30px; /* los px son válidos porque son espacios estructurales pequeños*/
+  
+}
+
+.card{
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.8rem; 
+    overflow: hidden; /* si no le pongo el border raius no se verá por los hijos dentor del column que son imagenes/ocupan todo el ancho y se sobreponen*/
+}
+
+.card .content-zone{
+    padding: 20px;
+    line-height: 1.5;
+}
+
+
+.card .content-zone h3{
+    color: var(--Very-Dark-Grayish-Blue);
+    font-weight: 500;
+}
+
+.card .content-zone .content{
+    color: var(--Grayish-Blue);
+    font-size: 100;
+    margin-top: 0.8rem ;
+}
+
+.meta-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-family: 'Manrope';
+    font-weight: 100;
+     color: var(--Light-Grayish-Blue);
+     font-size: 10px;
+ 
+}
+
+
+.footer-zone{
+
+    height: 64px;
+  
+ 
+}
+
+
+
+
+
+.meta-info img{
+    width: 16px;
+    height: 16px;
+
+    
+}
+
+
+.meta-info .avatar img{
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+
+}
+
+.author{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+}
+
+.author-text{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.author-text p{
+  padding: 0;
+  margin: 10px;
+  gap: 1rem;
+  line-height: 1.5;
+}
+
+.author-text .name{
+  font-weight: 500;
+  color: var(--Very-Dark-Grayish-Blue);
+ 
+}
+
+.author-text .date{
+  font-weight: 100;
+  color: var(--Grayish-Blue);
+
+}
+
+
+
+.author-text p {
+  padding: 0;   /* ← MUY IMPORTANTE */
+  margin: 0;
+}
+
+
+.share-toggle-button {
+    position: absolute; /* respecto a .card */
+    bottom: 20px;       /* lo “ancla” a la parte inferior del footer */
+    right: 1.5rem;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+
+}
+
+
+
+
+.share-toggle-button img{
+  width: 14px;
+  height: 14px;
+}
+
+
+.footer-zone .share-options-panel{  /* -share-active es una clase que se pondria en la clase card para mostrar que en ese estado la card s emeustra diferente  “Cuando la card tenga la clase share-active, entonces selecciona el hijo .share-options-panel”  */
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    gap: 0.8rem;
+    padding: 1.2rem 1.5rem;
+    background-color: var(--Very-Dark-Grayish-Blue);
+    color: var(--Light-Grayish-Blue);
+    border-radius: 0 0 0.8rem 0.8rem;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 1.5rem 3rem;
+
+}
+
+
+.card .share-options-panel img{
+   color: var(--Light-Grayish-Blue);
+   width: 15px;
+}
+
+
+
+
+
+
+/* estado activo */
+
+.share-options-panel {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+
+
+.card.share-active .share-options-panel {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+
+
+
+
+/* versión destopk  */
+
+.share-options-panel button {
+  background: none;
+  border: none;
+}
+
+@media(min-width:720px){
+    .card{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
