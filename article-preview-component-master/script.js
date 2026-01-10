@@ -8,7 +8,7 @@ btn.addEventListener('click', () =>{
     if (footer.style.display === 'none' ){
         footer.style.display = 'block'
     }else{
-        footer.style.display= 'none'
+        footer.style.display= 'flex'
     }
 
     

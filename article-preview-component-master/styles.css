@@ -69,7 +69,7 @@ main{
 }
 
 .card .content-zone{
-    padding: 20px;
+    padding: clamp(1.8rem, 3vw, 2rem);
     line-height: 1.5;
 }
 
@@ -77,34 +77,32 @@ main{
 .card .content-zone h3{
     color: var(--Very-Dark-Grayish-Blue);
     font-weight: 500;
+    font-size: clamp(0.950625rem, 0.863rem + 0.3739vw, 1.03125rem);
 }
 
 .card .content-zone .content{
     color: var(--Grayish-Blue);
-    font-size: 100;
+    font-size: clamp(0.8125rem, 0.7174rem + 0.4058vw, 0.9rem);
     margin-top: 0.8rem ;
+    margin-bottom: 20px;
 }
 
 .meta-info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: absolute;
     margin-top: 1.5rem;
     font-family: 'Manrope';
     font-weight: 100;
-     color: var(--Light-Grayish-Blue);
-     font-size: 10px;
+    color: var(--Light-Grayish-Blue);
+    font-size: 10px;
+    left: 0px;
+    bottom:0px;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-left: 20px;
+   
+   
  
 }
-
-
-.footer-zone{
-
-    height: 64px;
-  
- 
-}
-
 
 
 
@@ -128,8 +126,7 @@ main{
     display: flex;
     align-items: center;
     gap: 1rem;
-
-    width: 100%;
+   
 }
 
 .author-text{
@@ -148,27 +145,36 @@ main{
 .author-text .name{
   font-weight: 500;
   color: var(--Very-Dark-Grayish-Blue);
- 
+  font-size: clamp(0.75rem, 0.6141rem + 0.5797vw, 0.875rem);
 }
 
 .author-text .date{
-  font-weight: 100;
+  font-weight: 300;
   color: var(--Grayish-Blue);
+  font-size: clamp(0.75rem, 0.6141rem + 0.5797vw, 0.875rem);
 
 }
 
 
 
 .author-text p {
-  padding: 0;   /* ← MUY IMPORTANTE */
+  padding: 0;   /* ← MUY IMPORTANTE para evitar excesiva separación de los dos hijos p */
   margin: 0;
+}
+
+
+
+.footer-zone{
+
+    height: 64px;
+
 }
 
 
 .share-toggle-button {
     position: absolute; /* respecto a .card */
     bottom: 20px;       /* lo “ancla” a la parte inferior del footer */
-    right: 1.5rem;
+    right: 1.8rem;
     z-index: 3;
     display: grid;
     place-items: center;
@@ -200,8 +206,6 @@ main{
     background-color: var(--Very-Dark-Grayish-Blue);
     color: var(--Light-Grayish-Blue);
     border-radius: 0 0 0.8rem 0.8rem;
-    margin-right: -20px;
-    margin-left: -20px;
     padding: 1.5rem 3rem;
 
 }
@@ -213,11 +217,30 @@ main{
 }
 
 
+/*estado activo del botón*/
+
+.card.share-active .share-toggle-button {
+  background-color: var(--Grayish-Blue);
+}
 
 
+/*filter es una propiedad CSS que permite modificar visualmente imágenes y elementos, aplicando efectos como brillo, contraste, saturación, etc.   brightness(0) → hace que la imagen quede totalmente negra.
 
+Explicación: brightness(1) es normal, brightness(0) quita todo el brillo → negro.
 
-/* estado activo */
+invert(1) → invierte los colores.
+
+0 → normal
+
+1 → invierte completamente los colores
+
+Si la imagen estaba negra por el brightness(0), invertirla la vuelve blanca.*/
+
+.card.share-active .share-toggle-button img {
+  filter: brightness(0) invert(1);
+}
+
+/* estado activo  del panel*/
 
 .share-options-panel {
     opacity: 0;
@@ -246,9 +269,101 @@ main{
 }
 
 @media(min-width:720px){
+
+
+   
     .card{
         grid-template-columns: 1fr 1fr;
+        width: 60%;
+        height: 250px;
+       
     }
-}
 
+    
+
+    .meta-info{
+        position: absolute;
+        
+    }
+
+    .content-zone{
+
+        position: relative;
+    }
+
+
+    main{
+        justify-content: center ;
+    }
+
+    .visual-zone img{
+        width: 100%;
+        height: 100%; 
+    }
+
+    .card .content-zone h3{
+        font-size: clamp(0.8125rem, 0.75rem + 0.1389vw, 0.875rem);
+    }
+
+    .card .content-zone .content{
+        font-size: clamp(0.6875rem, 0.625rem + 0.1389vw, 0.75rem);
+    }
+     
+    .meta-info{
+        padding: 0;
+        margin: 0;
+
+    }
+    .author-text p{
+        padding: 0;
+        margin: 0px;
+        gap: 0rem;
+        line-height: 1.5;
+    }
+
+    .author-text .name , .author-text .date{
+        font-size: 10px;
+       
+    }
+    
+    .author-text .name{
+      font-weight: 600;
+    }
+
+
+    .footer-zone{
+     position: relative;
+     background-color: blue;
+    }
+
+    .footer-zone .share-options-panel{
+        background-color: blueviolet;
+        top: 0px;
+        bottom: 0;
+
+    }
+
+
+    .share-toggle-button {
+        top: ;
+    }
+     
+
+    }
+
+
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+}
 
